@@ -31,7 +31,7 @@ function closeDonationModal() {
 
 downloadBtn.addEventListener("click", () => {
   const downloadUrl =
-    "https://github.com/2M-2A/2M/releases/download/v1.0-Beta/2M-1.0-Beta.zip";
+    "https://github.com/2M-2A/2M/releases/download/v1.0.1/2M-1.0-Beta.zip";
 
   // Crear enlace de descarga
   const link = document.createElement("a");
