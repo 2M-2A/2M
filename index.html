@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="2M — sistema de inventario local, versión 1.0 Beta. Creado por marceAE + inteligencia artificial.">
+  <meta name="theme-color" content="#07152f">
+  <title>2M — Sistema de Inventario</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="2M inicio">
+        <img src="assets/logo.svg" alt="Logo 2M">
+        <span>2M</span>
+      </a>
+      <a class="nav-link" href="#caracteristicas">Características</a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="badge"><span></span> Versión 1.0 Beta</div>
+          <h1>Controla tu inventario de forma <em>fácil y rápida.</em></h1>
+          <p class="lead">
+            2M es un sistema de inventario local creado por <strong>marceAE + inteligencia artificial</strong>,
+            pensado para ayudarte a registrar productos, controlar entradas y salidas y consultar reportes.
+          </p>
+
+          <div class="download-card">
+            <div>
+              <div class="eyebrow">DESCARGA PARA WINDOWS</div>
+              <h2>2M — v1.0 Beta</h2>
+              <p>Archivo ZIP · aplicación local</p>
+            </div>
+            <button class="download-btn" id="downloadBtn" type="button">
+              <span class="download-icon">↓</span>
+              Descargar 2M
+            </button>
+          </div>
+
+          <p class="download-note">
+            La descarga contiene el programa listo para ejecutar. No necesitas instalar Python.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="glow"></div>
+          <div class="logo-card">
+            <img src="assets/logo.svg" alt="Logo de 2M">
+            <div class="logo-card-title">2M</div>
+            <div class="logo-card-sub">SISTEMA DE INVENTARIO</div>
+            <div class="version-pill">1.0 BETA</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="caracteristicas">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">¿QUÉ OFRECE?</div>
+          <h2>Todo lo necesario para empezar.</h2>
+          <p>Una herramienta local para organizar y controlar tu inventario sin depender de una conexión permanente a internet.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <div class="feature-icon">01</div>
+            <h3>Productos</h3>
+            <p>Registra productos utilizando códigos únicos nuevos.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">02</div>
+            <h3>Registro</h3>
+            <p>Consulta los códigos únicos y el valor asignado a cada producto.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">03</div>
+            <h3>Entradas y salidas</h3>
+            <p>Ingresa cantidades de productos previamente registrados y controla las salidas.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">04</div>
+            <h3>Reporte</h3>
+            <p>Revisa los datos reportados según la selección realizada en Inventario.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">05</div>
+            <h3>Inventario</h3>
+            <p>Trabaja con Diario Total o Inter Diario según la selección realizada.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">06</div>
+            <h3>Contraseña</h3>
+            <p>El administrador puede cambiar la contraseña única utilizada por el sistema.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section warning-section">
+      <div class="container">
+        <div class="warning">
+          <div class="warning-symbol">!</div>
+          <div>
+            <h3>Importante antes de eliminar un inventario</h3>
+            <p>Siempre exporta los datos si existe la posibilidad de necesitarlos en el futuro. Una vez eliminado un inventario, la información podría dejar de estar disponible.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="container about-grid">
+        <div>
+          <div class="eyebrow">PRIMER INGRESO</div>
+          <h2>El primer usuario será el administrador.</h2>
+          <p>
+            Al abrir 2M por primera vez, quien inicie el programa deberá crear el nombre del inventario
+            y una contraseña única. Esa contraseña será válida en todos los campos del programa que la requieran.
+          </p>
+        </div>
+        <div class="quote-card">
+          <div class="quote-mark">“</div>
+          <p>2M nace para hacer el control de inventario más sencillo, rápido y práctico.</p>
+          <span>— marceAE + IA</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="support">
+      <div class="container support-inner">
+        <div>
+          <div class="eyebrow">SI TE RESULTA ÚTIL</div>
+          <h2>Apoya el proyecto ❤️</h2>
+          <p>Puedes descargar 2M gratuitamente. Si quieres apoyar al creador, cualquier aporte ayuda a continuar mejorando el proyecto.</p>
+        </div>
+        <button class="support-btn" id="supportBtn" type="button">Quiero apoyar</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 2M · marceAE</span>
+      <span>Versión 1.0 Beta</span>
+    </div>
+  </footer>
+
+  <!-- Donation modal -->
+  <div class="modal-backdrop" id="donationModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="donationTitle">
+      <button class="modal-close" id="closeModal" type="button" aria-label="Cerrar">×</button>
+
+      <div class="modal-icon">♥</div>
+      <div class="eyebrow">APOYA A 2M</div>
+      <h2 id="donationTitle">¿Deseas donar al creador?</h2>
+      <p class="modal-text">Si 2M te fue útil, puedes apoyar su desarrollo. Elige un monto o dona la cantidad que prefieras.</p>
+
+      <div class="amounts">
+        <button class="amount" data-amount="5" type="button">S/ 5</button>
+        <button class="amount" data-amount="10" type="button">S/ 10</button>
+        <button class="amount" data-amount="other" type="button">Otro monto</button>
+      </div>
+
+      <div class="payment-area" id="paymentArea">
+        <div class="payment-card">
+          <div class="payment-title">Yape</div>
+          <p>Escanea el QR y coloca el monto que deseas donar.</p>
+          <img class="qr" src="assets/yape-qr.jpg" alt="Código QR de Yape para donar a marceAE">
+          <p class="qr-name">Marcelo Andre Abanto Escobar</p>
+        </div>
+
+        <div class="payment-card paypal-card">
+          <div class="payment-title">PayPal</div>
+          <p>El botón se activará cuando configures tu enlace de donación de PayPal en <code>script.js</code>.</p>
+          <button class="paypal-btn" id="paypalBtn" type="button">Donar con PayPal</button>
+        </div>
+      </div>
+
+      <button class="decline-btn" id="declineBtn" type="button">Por el momento no deseo, gracias</button>
+      <p class="download-status" id="downloadStatus"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
