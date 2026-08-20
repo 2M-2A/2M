@@ -30,17 +30,20 @@ function closeDonationModal() {
 }
 
 downloadBtn.addEventListener("click", () => {
-  // Inicia la descarga del ZIP.
-  window.open(
-  "https://github.com/2M-2A/2M/releases/tag/v1.0-Beta",
-  "_blank"
-);
+  // Abrir la versión oficial de 2M en GitHub.
+  const releaseUrl =
+    "https://github.com/2M-2A/2M/releases/tag/v1.0-Beta";
 
-  // Abrimos la ventana de apoyo después de iniciar la descarga.
+  window.open(releaseUrl, "_blank");
+
+  // Actualizar el mensaje de estado.
+  downloadStatus.textContent =
+    "Se abrió la página de descarga de 2M.";
+
+  // Mostrar la ventana de apoyo después de abrir la descarga.
   setTimeout(() => {
-    downloadStatus.textContent = "Tu descarga debería haber comenzado.";
     openModal();
-  }, 700);
+  }, 800);
 });
 
 supportBtn.addEventListener("click", () => {
