@@ -6,7 +6,7 @@
   2) Copia el enlace que te entregue PayPal.
   3) Pégalo entre las comillas de PAYPAL_DONATION_URL.
 */
-const PAYPAL_DONATION_URL = "";
+const PAYPAL_DONATION_URL = "https://www.paypal.com/donate/?hosted_button_id=6GM6364MLXTRU";
 
 const downloadBtn = document.getElementById("downloadBtn");
 const supportBtn = document.getElementById("supportBtn");
