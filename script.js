@@ -31,12 +31,10 @@ function closeDonationModal() {
 
 downloadBtn.addEventListener("click", () => {
   // Inicia la descarga del ZIP.
-  const link = document.createElement("a");
-  link.href = "https://github.com/2M-2A/2M/releases/download/v1.0-Beta/2M-1.0-Beta.zip";
-  link.download = "2M-1.0-Beta.zip";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
+  window.open(
+  "https://github.com/2M-2A/2M/releases/tag/v1.0-Beta",
+  "_blank"
+);
 
   // Abrimos la ventana de apoyo después de iniciar la descarga.
   setTimeout(() => {
