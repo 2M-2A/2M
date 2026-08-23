@@ -31,6 +31,7 @@ jobs:
       working-directory: ./app_movil_2m
       run: |
         export PATH=$PATH:~/.local/bin
+        yes | buildozer -v android debug || true
         buildozer -v android debug
 
     - name: Subir el APK generado (Artifacts)
