@@ -1,88 +1,90 @@
-/*
-  2M — configuración de la página
-  ----------------------------------------------------------
-  Para activar PayPal:
-  1) Crea tu página/enlace de donación en PayPal.
-  2) Copia el enlace que te entregue PayPal.
-  3) Pégalo entre las comillas de PAYPAL_DONATION_URL.
-*/
-const PAYPAL_DONATION_URL = "https://www.paypal.com/donate/?hosted_button_id=6GM6364MLXTRU";
+document.addEventListener('DOMContentLoaded', () => {
+  const downloadBtn = document.getElementById('downloadBtn');
+  const downloadMobileBtn = document.getElementById('downloadMobileBtn');
+  const supportBtn = document.getElementById('supportBtn');
+  const donationModal = document.getElementById('donationModal');
+  const closeModal = document.getElementById('closeModal');
+  const declineBtn = document.getElementById('declineBtn');
+  const amountButtons = document.querySelectorAll('.amount');
+  const paypalBtn = document.getElementById('paypalBtn');
+  const downloadStatus = document.getElementById('downloadStatus');
 
-const downloadBtn = document.getElementById("downloadBtn");
-const supportBtn = document.getElementById("supportBtn");
-const modalBackdrop = document.getElementById("donationModal");
-const closeModal = document.getElementById("closeModal");
-const declineBtn = document.getElementById("declineBtn");
-const paypalBtn = document.getElementById("paypalBtn");
-const downloadStatus = document.getElementById("downloadStatus");
-const amountButtons = document.querySelectorAll(".amount");
+  let selectedDownloadType = 'pc'; // Por defecto PC
 
-function openModal() {
-  modalBackdrop.classList.add("open");
-  modalBackdrop.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-}
+  // Enlaces directos a los archivos de tu Release v2.0 en GitHub
+  const pcFileUrl = 'https://github.com/2M-2A/2M/releases/download/untagged-c90cd913a377b4944935/2M_PC_Tkinter.zip';
+  const mobileFileUrl = 'https://github.com/2M-2A/2M/releases/download/untagged-c90cd913a377b4944935/2M_app_movil_2m.zip';
 
-function closeDonationModal() {
-  modalBackdrop.classList.remove("open");
-  modalBackdrop.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-}
+  function openModal(type) {
+    selectedDownloadType = type;
+    donationModal.classList.add('active');
+    donationModal.setAttribute('aria-hidden', 'false');
+    downloadStatus.textContent = '';
+  }
 
-downloadBtn.addEventListener("click", () => {
-  const downloadUrl =
-    "https://github.com/2M-2A/2M/releases/download/v1.0.1/2M-1.0-Beta.zip";
+  function closeModalWindow() {
+    donationModal.classList.remove('active');
+    donationModal.setAttribute('aria-hidden', 'true');
+  }
 
-  // Crear enlace de descarga
-  const link = document.createElement("a");
-  link.href = downloadUrl;
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
+  function triggerDownload() {
+    const fileUrl = selectedDownloadType === 'mobile' ? mobileFileUrl : pcFileUrl;
+    
+    // Crear un enlace invisible para forzar la descarga
+    const a = document.createElement('a');
+    a.href = fileUrl;
+    a.download = '';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
+    downloadStatus.textContent = '¡Descarga iniciada con éxito! Gracias por usar 2M.';
+    setTimeout(closeModalWindow, 2500);
+  }
 
-  // Mostrar mensaje y ventana de apoyo
-  setTimeout(() => {
-    downloadStatus.textContent =
-      "La descarga de 2M se ha iniciado.";
-    openModal();
-  }, 1000);
-});
+  // Eventos de los botones de descarga principal
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => openModal('pc'));
+  }
 
-supportBtn.addEventListener("click", () => {
-  openModal();
-});
+  if (downloadMobileBtn) {
+    downloadMobileBtn.addEventListener('click', () => openModal('mobile'));
+  }
 
-closeModal.addEventListener("click", closeDonationModal);
-declineBtn.addEventListener("click", closeDonationModal);
+  if (supportBtn) {
+    supportBtn.addEventListener('click', () => openModal('pc'));
+  }
 
-modalBackdrop.addEventListener("click", (event) => {
-  if (event.target === modalBackdrop) closeDonationModal();
-});
+  // Cerrar modal
+  if (closeModal) closeModal.addEventListener('click', closeModalWindow);
+  if (declineBtn) {
+    declineBtn.addEventListener('click', () => {
+      triggerDownload();
+    });
+  }
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeDonationModal();
-});
+  // Selección de montos para donación
+  amountButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      amountButtons.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      // Podrías enfocar o resaltar el Yape aquí si deseas
+    });
+  });
 
-amountButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    amountButtons.forEach((b) => b.classList.remove("selected"));
-    button.classList.add("selected");
-    const amount = button.dataset.amount;
-    if (amount === "other") {
-      downloadStatus.textContent = "Puedes donar el monto que prefieras mediante Yape o PayPal.";
-    } else {
-      downloadStatus.textContent = `Seleccionaste una donación de S/ ${amount}. Coloca ese monto en Yape o PayPal.`;
+  // Botón de PayPal
+  if (paypalBtn) {
+    paypalBtn.addEventListener('click', () => {
+      // Aquí puedes cambiar el enlace por tu link de PayPal.me si lo deseas
+      window.open('https://paypal.me', '_blank');
+      triggerDownload();
+    });
+  }
+
+  // Cerrar modal haciendo clic fuera de la caja
+  donationModal.addEventListener('click', (e) => {
+    if (e.target === donationModal) {
+      closeModalWindow();
     }
   });
-});
-
-paypalBtn.addEventListener("click", () => {
-  if (!PAYPAL_DONATION_URL.trim()) {
-    downloadStatus.textContent = "Falta configurar tu enlace de donación de PayPal en script.js.";
-    return;
-  }
-  window.open(PAYPAL_DONATION_URL, "_blank", "noopener,noreferrer");
 });
