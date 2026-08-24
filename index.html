@@ -72,7 +72,6 @@
       </div>
     </section>
 
-    <!-- El resto de tus secciones de características, aviso y soporte se mantienen igual -->
     <section class="section" id="caracteristicas">
       <div class="container">
         <div class="section-heading">
@@ -201,6 +200,73 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Script integrado para evitar problemas de caché o archivos externos -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const downloadBtn = document.getElementById('downloadBtn');
+      const downloadMobileBtn = document.getElementById('downloadMobileBtn');
+      const supportBtn = document.getElementById('supportBtn');
+      const donationModal = document.getElementById('donationModal');
+      const closeModal = document.getElementById('closeModal');
+      const declineBtn = document.getElementById('declineBtn');
+      const amountButtons = document.querySelectorAll('.amount');
+      const paypalBtn = document.getElementById('paypalBtn');
+      const downloadStatus = document.getElementById('downloadStatus');
+
+      let selectedDownloadType = 'pc';
+      const pcFileUrl = 'https://github.com/2M-2A/2M/releases';
+      const mobileFileUrl = 'https://github.com/2M-2A/2M/releases';
+
+      function openModal(type) {
+        selectedDownloadType = type;
+        if(donationModal) {
+          donationModal.classList.add('active');
+          donationModal.setAttribute('aria-hidden', 'false');
+        }
+        if(downloadStatus) downloadStatus.textContent = '';
+      }
+
+      function closeModalWindow() {
+        if(donationModal) {
+          donationModal.classList.remove('active');
+          donationModal.setAttribute('aria-hidden', 'true');
+        }
+      }
+
+      function triggerDownload() {
+        const fileUrl = selectedDownloadType === 'mobile' ? mobileFileUrl : pcFileUrl;
+        window.open(fileUrl, '_blank');
+        if(downloadStatus) downloadStatus.textContent = '¡Redirigiendo a las descargas oficiales!';
+        setTimeout(closeModalWindow, 2000);
+      }
+
+      if (downloadBtn) downloadBtn.addEventListener('click', () => openModal('pc'));
+      if (downloadMobileBtn) downloadMobileBtn.addEventListener('click', () => openModal('mobile'));
+      if (supportBtn) supportBtn.addEventListener('click', () => openModal('pc'));
+
+      if (closeModal) closeModal.addEventListener('click', closeModalWindow);
+      if (declineBtn) declineBtn.addEventListener('click', triggerDownload);
+
+      amountButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          amountButtons.forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        });
+      });
+
+      if (paypalBtn) {
+        paypalBtn.addEventListener('click', () => {
+          window.open('https://paypal.me', '_blank');
+          triggerDownload();
+        });
+      }
+
+      if (donationModal) {
+        donationModal.addEventListener('click', (e) => {
+          if (e.target === donationModal) closeModalWindow();
+        });
+      }
+    });
+  </script>
 </body>
 </html>
