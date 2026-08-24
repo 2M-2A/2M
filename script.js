@@ -11,10 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let selectedDownloadType = 'pc'; // Por defecto PC
 
-  // Enlaces directos a los archivos de tu Release v2.0 en GitHub
-  const pcFileUrl = 'https://github.com/2M-2A/2M/releases/download/untagged-c90cd913a377b4944935/2M_PC_Tkinter.zip';
-  const mobileFileUrl = 'https://github.com/2M-2A/2M/releases/download/untagged-c90cd913a377b4944935/2M_app_movil_2m.zip';
-
   function openModal(type) {
     selectedDownloadType = type;
     donationModal.classList.add('active');
@@ -28,18 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function triggerDownload() {
-    const fileUrl = selectedDownloadType === 'mobile' ? mobileFileUrl : pcFileUrl;
-    
-    // Crear un enlace invisible para forzar la descarga
-    const a = document.createElement('a');
-    a.href = fileUrl;
-    a.download = '';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-
-    downloadStatus.textContent = '¡Descarga iniciada con éxito! Gracias por usar 2M.';
-    setTimeout(closeModalWindow, 2500);
+    // Redirige directamente a la sección de Releases de tu repositorio
+    window.open('https://github.com/2M-2A/2M/releases', '_blank');
+    downloadStatus.textContent = '¡Redirigiendo a las descargas oficiales!';
+    setTimeout(closeModalWindow, 2000);
   }
 
   // Eventos de los botones de descarga principal
@@ -68,14 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       amountButtons.forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
-      // Podrías enfocar o resaltar el Yape aquí si deseas
     });
   });
 
   // Botón de PayPal
   if (paypalBtn) {
     paypalBtn.addEventListener('click', () => {
-      // Aquí puedes cambiar el enlace por tu link de PayPal.me si lo deseas
       window.open('https://paypal.me', '_blank');
       triggerDownload();
     });
