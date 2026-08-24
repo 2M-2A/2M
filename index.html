@@ -11,6 +11,9 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <!-- (Asegúrate de que el nombre del archivo en href="..." coincida con el nombre de tu imagen real) -->
   
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2196F3">
+
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -145,7 +148,6 @@
       let currentFileUrl = 'https://github.com/2M-2A/2M/releases/download/v2.0/2M_PC_Tkinter.zip'; // Por defecto PC
 
       function openModal(fileType) {
-        // Seleccionamos el enlace directo según el botón que presionó
         if (fileType === 'mobile') {
           currentFileUrl = 'https://github.com/2M-2A/2M/releases/download/v2.0/2M_app_movil_2m.zip';
         } else {
@@ -161,7 +163,6 @@
       }
 
       function executeDownload() {
-        // Dispara la descarga del archivo en paralelo en una pestaña oculta/invisible
         const iframe = document.createElement('iframe');
         iframe.style.display = 'none';
         iframe.src = currentFileUrl;
@@ -169,7 +170,6 @@
 
         if (downloadStatus) downloadStatus.textContent = '¡Descarga iniciada con éxito! Gracias.';
         
-        // Cierra la ventana de donación después de 2 segundos para que note que ya empezó a descargar
         setTimeout(() => {
           closeModalWindow();
           if (iframe) iframe.remove();
@@ -189,6 +189,12 @@
         });
       }
     });
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
   </script>
 </body>
 </html>
