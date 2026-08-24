@@ -37,10 +37,11 @@
               <h2>2M — v2.0 (PC)</h2>
               <p>Archivo ZIP · aplicación local</p>
             </div>
-            <button class="download-btn" id="downloadBtn" type="button">
+            <!-- Botón directo a la página de releases para asegurar descarga inmediata -->
+            <a href="https://github.com/2M-2A/2M/releases" target="_blank" class="download-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; position: relative; z-index: 999;">
               <span class="download-icon">↓</span>
               Descargar PC
-            </button>
+            </a>
           </div>
 
           <div class="download-card" style="margin-top: 15px;">
@@ -49,10 +50,11 @@
               <h2>2M — v2.0 (Android)</h2>
               <p>Archivo ZIP / APK móvil</p>
             </div>
-            <button class="download-btn" id="downloadMobileBtn" type="button" style="background-color: #10b981;">
+            <!-- Botón directo a la página de releases para asegurar descarga inmediata -->
+            <a href="https://github.com/2M-2A/2M/releases" target="_blank" class="download-btn" style="background-color: #10b981; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; position: relative; z-index: 999;">
               <span class="download-icon">↓</span>
               Descargar Celular
-            </button>
+            </a>
           </div>
 
           <p class="download-note">
@@ -152,7 +154,7 @@
           <h2>Apoya el proyecto ❤️</h2>
           <p>Puedes descargar 2M gratuitamente. Si quieres apoyar al creador, cualquier aporte ayuda a continuar mejorando el proyecto.</p>
         </div>
-        <button class="support-btn" id="supportBtn" type="button">Quiero apoyar</button>
+        <button class="support-btn" id="supportBtn" type="button" style="position: relative; z-index: 999;">Quiero apoyar</button>
       </div>
     </section>
   </main>
@@ -163,110 +165,5 @@
       <span>Versión 2.0</span>
     </div>
   </footer>
-
-  <!-- Donation modal -->
-  <div class="modal-backdrop" id="donationModal" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="donationTitle">
-      <button class="modal-close" id="closeModal" type="button" aria-label="Cerrar">×</button>
-
-      <div class="modal-icon">♥</div>
-      <div class="eyebrow">APOYA A 2M</div>
-      <h2 id="donationTitle">¿Deseas donar al creador?</h2>
-      <p class="modal-text">Si deseas apoyar al creador para proyectos futuros. Elige un monto o dona la cantidad que prefieras.</p>
-
-      <div class="amounts">
-        <button class="amount" data-amount="5" type="button">S/ 5</button>
-        <button class="amount" data-amount="10" type="button">S/ 10</button>
-        <button class="amount" data-amount="other" type="button">Otro monto</button>
-      </div>
-
-      <div class="payment-area" id="paymentArea">
-        <div class="payment-card">
-          <div class="payment-title">Yape</div>
-          <p>Escanea el QR y coloca el monto que deseas donar.</p>
-          <img class="qr" src="assets/yape-qr.jpg" alt="Código QR de Yape para donar a marceAE">
-          <p class="qr-name">Marcelo Andre Abanto Escobar</p>
-        </div>
-
-        <div class="payment-card paypal-card">
-          <div class="payment-title">PayPal</div>
-          <p>Puedes realizar tu donación de forma segura mediante PayPal.</p>
-          <button class="paypal-btn" id="paypalBtn" type="button">Donar con PayPal</button>
-        </div>
-      </div>
-
-      <button class="decline-btn" id="declineBtn" type="button">Por el momento no deseo, gracias</button>
-      <p class="download-status" id="downloadStatus"></p>
-    </div>
-  </div>
-
-  <!-- Script integrado para evitar problemas de caché o archivos externos -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const downloadBtn = document.getElementById('downloadBtn');
-      const downloadMobileBtn = document.getElementById('downloadMobileBtn');
-      const supportBtn = document.getElementById('supportBtn');
-      const donationModal = document.getElementById('donationModal');
-      const closeModal = document.getElementById('closeModal');
-      const declineBtn = document.getElementById('declineBtn');
-      const amountButtons = document.querySelectorAll('.amount');
-      const paypalBtn = document.getElementById('paypalBtn');
-      const downloadStatus = document.getElementById('downloadStatus');
-
-      let selectedDownloadType = 'pc';
-      const pcFileUrl = 'https://github.com/2M-2A/2M/releases';
-      const mobileFileUrl = 'https://github.com/2M-2A/2M/releases';
-
-      function openModal(type) {
-        selectedDownloadType = type;
-        if(donationModal) {
-          donationModal.classList.add('active');
-          donationModal.setAttribute('aria-hidden', 'false');
-        }
-        if(downloadStatus) downloadStatus.textContent = '';
-      }
-
-      function closeModalWindow() {
-        if(donationModal) {
-          donationModal.classList.remove('active');
-          donationModal.setAttribute('aria-hidden', 'true');
-        }
-      }
-
-      function triggerDownload() {
-        const fileUrl = selectedDownloadType === 'mobile' ? mobileFileUrl : pcFileUrl;
-        window.open(fileUrl, '_blank');
-        if(downloadStatus) downloadStatus.textContent = '¡Redirigiendo a las descargas oficiales!';
-        setTimeout(closeModalWindow, 2000);
-      }
-
-      if (downloadBtn) downloadBtn.addEventListener('click', () => openModal('pc'));
-      if (downloadMobileBtn) downloadMobileBtn.addEventListener('click', () => openModal('mobile'));
-      if (supportBtn) supportBtn.addEventListener('click', () => openModal('pc'));
-
-      if (closeModal) closeModal.addEventListener('click', closeModalWindow);
-      if (declineBtn) declineBtn.addEventListener('click', triggerDownload);
-
-      amountButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          amountButtons.forEach(b => b.classList.remove('selected'));
-          btn.classList.add('selected');
-        });
-      });
-
-      if (paypalBtn) {
-        paypalBtn.addEventListener('click', () => {
-          window.open('https://paypal.me', '_blank');
-          triggerDownload();
-        });
-      }
-
-      if (donationModal) {
-        donationModal.addEventListener('click', (e) => {
-          if (e.target === donationModal) closeModalWindow();
-        });
-      }
-    });
-  </script>
 </body>
 </html>
