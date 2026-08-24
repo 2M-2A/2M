@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="2M — sistema de inventario local, versión 2.0. Creado por marceAE.">
+  <meta name="description" content="2M — sistema de inventario local, versión 2.1. Creado por marceAE.">
   <meta name="theme-color" content="#2563eb">
   <title>2M — Sistema de Inventario</title>
   
@@ -40,7 +40,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="badge">Versión 2.0</div>
+          <div class="badge">Versión 2.1</div>
           <h1>Controla tu inventario de forma <em>fácil y rápida.</em></h1>
           <p class="lead">
             2M es un sistema de inventario local creado por <strong>marceAE</strong>,
@@ -51,7 +51,7 @@
           <div class="download-card">
             <div>
               <div class="eyebrow">DESCARGA PARA WINDOWS</div>
-              <h2>2M — v2.0 (PC)</h2>
+              <h2>2M — v2.1 (PC)</h2>
               <p>Archivo ZIP · aplicación local</p>
             </div>
             <button class="download-btn" id="downloadBtn" type="button">
@@ -62,7 +62,7 @@
           <div class="download-card" style="margin-top: 15px;">
             <div>
               <div class="eyebrow">DESCARGA PARA CELULAR</div>
-              <h2>2M — v2.0 (Android PWA)</h2>
+              <h2>2M — Conexión Móvil</h2>
               <p>Conexión directa por Wi-Fi con tu PC</p>
             </div>
             <a href="#panelMovil" class="download-btn" style="background-color: #10b981; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
@@ -124,7 +124,7 @@
     <section class="support">
       <div class="container support-inner">
         <div>
-          <div class="eyebrow">APoya EL PROYECTO</div>
+          <div class="eyebrow">APOYA EL PROYECTO</div>
           <h2>¿Te resulta útil? ❤️</h2>
           <p>Puedes descargar la app gratis y, si lo deseas, apoyar al creador.</p>
         </div>
@@ -136,7 +136,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <span>© 2026 2M · marceAE</span>
-      <span>Versión 2.0</span>
+      <span>Versión 2.1</span>
     </div>
   </footer>
 
@@ -179,7 +179,8 @@
       const declineBtn = document.getElementById('declineBtn');
       const downloadStatus = document.getElementById('downloadStatus');
 
-      let currentFileUrl = 'https://github.com/2M-2A/2M/releases/download/v2.0/2M_PC_Tkinter.zip';
+      // Enlace directo al archivo ZIP en tu Release de GitHub (v2.1)
+      let currentFileUrl = 'https://github.com/2M-2A/2M/releases/download/2.1/2M.zip';
 
       function openModal() {
         if (donationModal) donationModal.style.display = 'flex';
@@ -259,13 +260,6 @@
         resDiv.style.background = '#7f1d1d';
         resDiv.style.color = '#fca5a5';
       });
-    }
-  </script>
-
-  <!-- Service Worker PWA -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
     }
   </script>
 </body>
