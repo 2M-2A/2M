@@ -8,11 +8,10 @@
   <title>2M — Sistema de Inventario</title>
   
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="manifest" href="manifest.json">
 
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Estilos extra para el panel móvil integrado */
+    /* Estilos extra para el panel de configuración de IP en el celular */
     .mobile-app-box { background: #0f172a; border: 2px dashed #38bdf8; padding: 20px; border-radius: 12px; margin-top: 25px; color: #fff; }
     .mobile-app-box input, .mobile-app-box button { width: 100%; padding: 10px; margin-top: 8px; border-radius: 6px; border: 1px solid #475569; font-size: 14px; box-sizing: border-box; }
     .mobile-app-box input { background: #1e293b; color: #fff; }
@@ -30,7 +29,7 @@
       </a>
       <nav class="nav-links">
         <a class="nav-link" href="#caracteristicas">Características</a>
-        <a class="nav-link" href="#panelMovil" style="color: #38bdf8; font-weight: bold;">📱 App Móvil</a>
+        <a class="nav-link" href="#panelMovil" style="color: #38bdf8; font-weight: bold;">📱 Configurar IP Celular</a>
       </nav>
     </div>
   </header>
@@ -62,11 +61,12 @@
           <div class="download-card" style="margin-top: 15px;">
             <div>
               <div class="eyebrow">DESCARGA PARA CELULAR</div>
-              <h2>2M — Conexión Móvil</h2>
-              <p>Conexión directa por Wi-Fi con tu PC</p>
+              <h2>2M — v2.1 (Android APK)</h2>
+              <p>Aplicación móvil oficial para Android</p>
             </div>
-            <a href="#panelMovil" class="download-btn" style="background-color: #10b981; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
-              <span>📱</span> Usar App Móvil
+            <!-- Cambia este enlace cuando subas tu APK a los Releases de GitHub -->
+            <a href="https://github.com/2M-2A/2M/releases/download/2.1/2M.apk" class="download-btn" style="background-color: #10b981; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+              <span>📱</span> Descargar APK
             </a>
           </div>
 
@@ -75,31 +75,20 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DE LA APP MÓVIL INTEGRADA -->
+    <!-- SECCIÓN DE CONFIGURACIÓN RÁPIDA -->
     <section class="section" id="panelMovil" style="background: #07152f; padding: 40px 0;">
       <div class="container" style="max-width: 450px;">
         <div class="section-heading" style="text-align: center;">
-          <div class="eyebrow" style="color: #38bdf8;">MODO INVENTARIO MÓVIL</div>
-          <h2 style="color: #fff;">Control desde tu Celular</h2>
+          <div class="eyebrow" style="color: #38bdf8;">GUÍA DE CONEXIÓN MÓVIL</div>
+          <h2 style="color: #fff;">Conecta tu App con la PC</h2>
         </div>
         
         <div class="mobile-app-box">
-          <label for="serverIp" style="font-size: 13px; color: #94a3b8;">IP de la PC (Ej: 192.168.0.109:8765):</label>
-          <input type="text" id="serverIp" value="192.168.0.109:8765" placeholder="192.168.0.109:8765">
-          <button onclick="guardarIp()" style="background: #475569; margin-top: 5px;">Guardar IP</button>
-
-          <hr style="border: 0; border-top: 1px solid #334155; margin: 15px 0;">
-
-          <label for="codigo" style="font-size: 13px; color: #94a3b8;">Código o Nombre del Producto:</label>
-          <input type="text" id="codigo" placeholder="Ej: PROD-001">
-
-          <label for="cantidad" style="font-size: 13px; color: #94a3b8; margin-top: 10px;">Cantidad:</label>
-          <input type="number" id="cantidad" placeholder="Ej: 10">
-
-          <button onclick="enviarAccion('registrar')" style="margin-top: 15px;">Registrar Producto</button>
-          <button onclick="enviarAccion('consultar')" style="background: #0d9488; margin-top: 8px;">Consultar Stock</button>
-
-          <div id="resultado" class="card-res"></div>
+          <p style="font-size: 13px; color: #94a3b8; margin-bottom: 10px; line-height: 1.4;">
+            Una vez instalado el APK en tu celular, ingresa la dirección IP de tu computadora (que aparece en el programa de PC) para sincronizar el inventario por Wi-Fi.
+          </p>
+          <label for="serverIp" style="font-size: 13px; color: #94a3b8;">Ejemplo de IP de tu PC:</label>
+          <input type="text" id="serverIp" value="192.168.0.109:8765" readonly style="opacity: 0.8;">
         </div>
       </div>
     </section>
@@ -169,7 +158,7 @@
     </div>
   </div>
 
-  <!-- SCRIPTS DE DESCARGA Y CONEXIÓN MÓVIL -->
+  <!-- SCRIPT DE DESCARGA DE PC -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const downloadBtn = document.getElementById('downloadBtn');
@@ -179,7 +168,6 @@
       const declineBtn = document.getElementById('declineBtn');
       const downloadStatus = document.getElementById('downloadStatus');
 
-      // Enlace directo al archivo ZIP en tu Release de GitHub (v2.1)
       let currentFileUrl = 'https://github.com/2M-2A/2M/releases/download/2.1/2M.zip';
 
       function openModal() {
@@ -215,52 +203,7 @@
           if (e.target === donationModal) closeModalWindow();
         });
       }
-
-      // Cargar IP guardada
-      const savedIp = localStorage.getItem('2m_server_ip');
-      if (savedIp) {
-        const ipInput = document.getElementById('serverIp');
-        if (ipInput) ipInput.value = savedIp;
-      }
     });
-
-    function guardarIp() {
-      const ip = document.getElementById('serverIp').value;
-      localStorage.setItem('2m_server_ip', ip);
-      alert('¡IP guardada correctamente!');
-    }
-
-    function enviarAccion(accion) {
-      const ip = document.getElementById('serverIp').value;
-      const codigo = document.getElementById('codigo').value;
-      const cantidad = document.getElementById('cantidad').value;
-      const resDiv = document.getElementById('resultado');
-
-      if (!ip) {
-        alert('Por favor ingresa la IP de la PC.');
-        return;
-      }
-
-      resDiv.style.display = 'block';
-      resDiv.innerHTML = 'Conectando con la PC...';
-
-      fetch(`http://${ip}/${accion}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ codigo: codigo, cantidad: cantidad })
-      })
-      .then(response => response.json())
-      .then(data => {
-        resDiv.innerHTML = `<strong>Respuesta:</strong> ${data.mensaje || JSON.stringify(data)}`;
-        resDiv.style.background = '#065f46';
-        resDiv.style.color = '#34d399';
-      })
-      .catch(error => {
-        resDiv.innerHTML = `Error de conexión. Verifica que la PC y el celular estén en el mismo Wi-Fi y el servidor esté activo.`;
-        resDiv.style.background = '#7f1d1d';
-        resDiv.style.color = '#fca5a5';
-      });
-    }
   </script>
 </body>
 </html>
