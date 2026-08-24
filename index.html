@@ -137,7 +137,16 @@
       const declineBtn = document.getElementById('declineBtn');
       const downloadStatus = document.getElementById('downloadStatus');
 
-      function openModal() {
+      let currentFileUrl = 'https://github.com/2M-2A/2M/releases/download/v2.0/2M_PC_Tkinter.zip'; // Por defecto PC
+
+      function openModal(fileType) {
+        // Seleccionamos el enlace directo según el botón que presionó
+        if (fileType === 'mobile') {
+          currentFileUrl = 'https://github.com/2M-2A/2M/releases/download/v2.0/2M_app_movil_2m.zip';
+        } else {
+          currentFileUrl = 'https://github.com/2M-2A/2M/releases/download/v2.0/2M_PC_Tkinter.zip';
+        }
+
         if (donationModal) donationModal.style.display = 'flex';
         if (downloadStatus) downloadStatus.textContent = '';
       }
@@ -147,14 +156,25 @@
       }
 
       function executeDownload() {
-        window.open('https://github.com/2M-2A/2M/releases', '_blank');
-        if (downloadStatus) downloadStatus.textContent = '¡Redirigiendo a las descargas!';
-        setTimeout(closeModalWindow, 1500);
+        // Dispara la descarga del archivo en paralelo en una pestaña oculta/invisible
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = currentFileUrl;
+        document.body.appendChild(iframe);
+
+        if (downloadStatus) downloadStatus.textContent = '¡Descarga iniciada con éxito! Gracias.';
+        
+        // Cierra la ventana de donación después de 2 segundos para que note que ya empezó a descargar
+        setTimeout(() => {
+          closeModalWindow();
+          if (iframe) iframe.remove();
+        }, 2000);
       }
 
-      if (downloadBtn) downloadBtn.addEventListener('click', openModal);
-      if (downloadMobileBtn) downloadMobileBtn.addEventListener('click', openModal);
-      if (supportBtn) supportBtn.addEventListener('click', openModal);
+      if (downloadBtn) downloadBtn.addEventListener('click', () => openModal('pc'));
+      if (downloadMobileBtn) downloadMobileBtn.addEventListener('click', () => openModal('mobile'));
+      if (supportBtn) supportBtn.addEventListener('click', () => openModal('pc'));
+
       if (closeModal) closeModal.addEventListener('click', closeModalWindow);
       if (declineBtn) declineBtn.addEventListener('click', executeDownload);
 
