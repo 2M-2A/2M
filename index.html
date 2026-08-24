@@ -3,194 +3,105 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="2M — sistema de inventario local, versión 2.0. Creado por marceAE.">
-  <meta name="theme-color" content="#07152f">
-  <title>2M — Sistema de Inventario</title>
-  
-  <!-- ¡AQUÍ DEBES PEGAR LA LÍNEA DEL FAVICON! -->
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <!-- (Asegúrate de que el nombre del archivo en href="..." coincida con el nombre de tu imagen real) -->
-  
+  <meta name="theme-color" content="#2563eb">
+  <title>2M - App Móvil Inventario</title>
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2196F3">
-
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
+    .container { max-width: 400px; margin: 0 auto; background: #1e293b; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    h1 { font-size: 20px; text-align: center; color: #38bdf8; margin-bottom: 15px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; font-size: 13px; margin-bottom: 5px; color: #94a3b8; }
+    input, button { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; font-size: 14px; box-sizing: border-box; }
+    input { background: #0f172a; color: #fff; }
+    button { background: #2563eb; color: #fff; font-weight: bold; border: none; cursor: pointer; margin-top: 5px; }
+    button:active { background: #1d4ed8; }
+    .status { margin-top: 15px; padding: 10px; border-radius: 6px; font-size: 13px; text-align: center; }
+    .success { background: #065f46; color: #34d399; }
+    .error { background: #7f1d1d; color: #fca5a5; }
+    .card { background: #0f172a; padding: 12px; border-radius: 8px; margin-top: 15px; }
+  </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="#inicio">
-        <span>2M</span>
-      </a>
-      <nav class="nav-links">
-        <a class="nav-link" href="#caracteristicas">Características</a>
-      </nav>
+
+  <div class="container">
+    <h1>📱 2M - App Móvil</h1>
+    
+    <!-- CONFIGURACIÓN DE IP -->
+    <div class="form-group">
+      <label for="serverIp">Dirección IP de la PC (Port 8765):</label>
+      <input type="text" id="serverIp" value="192.168.0.109:8765" placeholder="Ej: 192.168.0.109:8765">
+      <button onclick="guardarIp()" style="background: #475569; margin-top: 8px;">Guardar IP</button>
     </div>
-  </header>
 
-  <!-- HERO / SECCIÓN PRINCIPAL -->
-  <main id="inicio">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="badge">Versión 2.0</div>
-          <h1>Controla tu inventario de forma <em>fácil y rápida.</em></h1>
-          <p class="lead">
-            2M es un sistema de inventario local creado por <strong>marceAE</strong>,
-            pensado para ayudarte a registrar productos, controlar entradas y salidas y consultar reportes.
-          </p>
+    <hr style="border: 0; border-top: 1px solid #334155; margin: 20px 0;">
 
-          <!-- BOTONES DE DESCARGA -->
-          <div class="download-card">
-            <div>
-              <div class="eyebrow">DESCARGA PARA WINDOWS</div>
-              <h2>2M — v2.0 (PC)</h2>
-              <p>Archivo ZIP · aplicación local</p>
-            </div>
-            <button class="download-btn" id="downloadBtn" type="button">
-              <span>↓</span> Descargar PC
-            </button>
-          </div>
-
-          <div class="download-card" style="margin-top: 15px;">
-            <div>
-              <div class="eyebrow">DESCARGA PARA CELULAR</div>
-              <h2>2M — v2.0 (Android)</h2>
-              <p>Archivo ZIP / APK móvil</p>
-            </div>
-            <button class="download-btn" id="downloadMobileBtn" type="button" style="background-color: #10b981;">
-              <span>↓</span> Descargar Celular
-            </button>
-          </div>
-
-          <p class="download-note">Disponible para Windows y Android. No requiere instalar Python.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CARACTERÍSTICAS -->
-    <section class="section" id="caracteristicas">
-      <div class="container">
-        <div class="section-heading">
-          <div class="eyebrow">¿QUÉ OFRECE?</div>
-          <h2>Todo lo necesario para empezar</h2>
-        </div>
-        <div class="features">
-          <article class="feature"><h3>01. Productos</h3><p>Registra artículos con códigos únicos.</p></article>
-          <article class="feature"><h3>02. Registro</h3><p>Consulta el valor asignado de cada producto.</p></article>
-          <article class="feature"><h3>03. Entradas/Salidas</h3><p>Controla stock de forma sencilla.</p></article>
-          <article class="feature"><h3>04. Reportes</h3><p>Revisa datos de inventario al instante.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN APOYO -->
-    <section class="support">
-      <div class="container support-inner">
-        <div>
-          <div class="eyebrow">APoya EL PROYECTO</div>
-          <h2>¿Te resulta útil? ❤️</h2>
-          <p>Puedes descargar la app gratis y, si lo deseas, apoyar al creador.</p>
-        </div>
-        <button class="support-btn" id="supportBtn" type="button">Quiero apoyar</button>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span>© 2026 2M · marceAE</span>
-      <span>Versión 2.0</span>
+    <!-- REGISTRAR / CONSULTAR -->
+    <div class="form-group">
+      <label for="codigo">Código o Nombre del Producto:</label>
+      <input type="text" id="codigo" placeholder="Ej: PROD-001">
     </div>
-  </footer>
 
-  <!-- VENTANA MODAL DE DONACIÓN (YAPE Y PAYPAL) -->
-  <div class="modal-backdrop" id="donationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: 9999; justify-content: center; align-items: center;">
-    <div class="modal" style="background: #0b1c3c; padding: 30px; border-radius: 12px; max-width: 420px; width: 90%; color: #fff; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-      <button class="modal-close" id="closeModal" type="button" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;">×</button>
-
-      <div style="font-size: 28px; color: #f43f5e; margin-bottom: 8px;">♥</div>
-      <div style="color: #38bdf8; font-size: 12px; font-weight: bold; margin-bottom: 5px;">APOYA A 2M</div>
-      <h2 style="font-size: 20px; margin-bottom: 10px;">¿Deseas donar al creador?</h2>
-      <p style="font-size: 13px; color: #94a3b8; margin-bottom: 20px;">Tu apoyo ayuda a continuar mejorando el proyecto. Elige una opción:</p>
-
-      <!-- TARJETA YAPE -->
-      <div style="background: #1e293b; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 15px;">
-        <div style="font-weight: bold; color: #38bdf8; margin-bottom: 5px;">Yape</div>
-        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">Escanea el código QR:</p>
-        <img src="assets/yape-qr.jpg" alt="QR Yape" style="width: 110px; height: 110px; border-radius: 6px; margin-bottom: 5px;">
-        <p style="font-size: 11px; color: #cbd5e1;">Marcelo Andre Abanto Escobar</p>
-      </div>
-
-      <!-- BOTÓN PAYPAL -->
-      <div style="background: #1e293b; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 15px;">
-        <div style="font-weight: bold; color: #38bdf8; margin-bottom: 5px;">PayPal</div>
-        <a href="https://paypal.me" target="_blank" style="display: inline-block; background: #0070ba; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold;">Donar con PayPal</a>
-      </div>
-
-      <button id="declineBtn" type="button" style="width: 100%; padding: 10px; background: transparent; border: 1px solid #475569; color: #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 13px;">O continuar con la descarga gratis</button>
-      <p id="downloadStatus" style="text-align: center; margin-top: 10px; font-size: 12px; color: #34d399;"></p>
+    <div class="form-group">
+      <label for="cantidad">Cantidad a Ingresar / Retirar:</label>
+      <input type="number" id="cantidad" placeholder="Ej: 10">
     </div>
+
+    <button onclick="enviarAccion('registrar')">Registrar Producto</button>
+    <button onclick="enviarAccion('consultar')" style="background: #0d9488; margin-top: 10px;">Consultar Stock</button>
+
+    <div id="resultado" class="card" style="display:none;"></div>
   </div>
 
-  <!-- SCRIPT INTEGRADO (CERO DEPENDENCIAS EXTERNAS) -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const downloadBtn = document.getElementById('downloadBtn');
-      const downloadMobileBtn = document.getElementById('downloadMobileBtn');
-      const supportBtn = document.getElementById('supportBtn');
-      const donationModal = document.getElementById('donationModal');
-      const closeModal = document.getElementById('closeModal');
-      const declineBtn = document.getElementById('declineBtn');
-      const downloadStatus = document.getElementById('downloadStatus');
+    // Cargar IP guardada si existe
+    window.onload = function() {
+      const savedIp = localStorage.getItem('2m_server_ip');
+      if (savedIp) {
+        document.getElementById('serverIp').value = savedIp;
+      }
+    };
 
-      let currentFileUrl = 'https://github.com/2M-2A/2M/releases/download/v2.0/2M_PC_Tkinter.zip'; // Por defecto PC
+    function guardarIp() {
+      const ip = document.getElementById('serverIp').value;
+      localStorage.setItem('2m_server_ip', ip);
+      alert('¡IP guardada correctamente!');
+    }
 
-      function openModal(fileType) {
-        if (fileType === 'mobile') {
-          currentFileUrl = 'https://github.com/2M-2A/2M/releases/download/v2.0/2M_app_movil_2m.zip';
-        } else {
-          currentFileUrl = 'https://github.com/2M-2A/2M/releases/download/v2.0/2M_PC_Tkinter.zip';
-        }
+    function enviarAccion(accion) {
+      const ip = document.getElementById('serverIp').value;
+      const codigo = document.getElementById('codigo').value;
+      const cantidad = document.getElementById('cantidad').value;
+      const resDiv = document.getElementById('resultado');
 
-        if (donationModal) donationModal.style.display = 'flex';
-        if (downloadStatus) downloadStatus.textContent = '';
+      if (!ip) {
+        alert('Por favor ingresa la IP de la PC.');
+        return;
       }
 
-      function closeModalWindow() {
-        if (donationModal) donationModal.style.display = 'none';
-      }
+      resDiv.style.display = 'block';
+      resDiv.innerHTML = 'Conectando con la PC...';
+      resDiv.className = 'card';
 
-      function executeDownload() {
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = currentFileUrl;
-        document.body.appendChild(iframe);
-
-        if (downloadStatus) downloadStatus.textContent = '¡Descarga iniciada con éxito! Gracias.';
-        
-        setTimeout(() => {
-          closeModalWindow();
-          if (iframe) iframe.remove();
-        }, 2000);
-      }
-
-      if (downloadBtn) downloadBtn.addEventListener('click', () => openModal('pc'));
-      if (downloadMobileBtn) downloadMobileBtn.addEventListener('click', () => openModal('mobile'));
-      if (supportBtn) supportBtn.addEventListener('click', () => openModal('pc'));
-
-      if (closeModal) closeModal.addEventListener('click', closeModalWindow);
-      if (declineBtn) declineBtn.addEventListener('click', executeDownload);
-
-      if (donationModal) {
-        donationModal.addEventListener('click', (e) => {
-          if (e.target === donationModal) closeModalWindow();
-        });
-      }
-    });
+      // Petición HTTP al servidor local de tu PC (Python)
+      fetch(`http://${ip}/${accion}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ codigo: codigo, cantidad: cantidad })
+      })
+      .then(response => response.json())
+      .then(data => {
+        resDiv.innerHTML = `<strong>Respuesta:</strong> ${data.mensaje || JSON.stringify(data)}`;
+        resDiv.className = 'card success';
+      })
+      .catch(error => {
+        resDiv.innerHTML = `Error de conexión. Asegúrate de estar en el mismo Wi-Fi y que la IP sea correcta.`;
+        resDiv.className = 'card error';
+      });
+    }
   </script>
 
+  <!-- Script del Service Worker para que siga siendo PWA instalable -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js');
