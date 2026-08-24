@@ -3,43 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="2M — sistema de inventario local, versión 2.0. Creado por marceAE + inteligencia artificial.">
+  <meta name="description" content="2M — sistema de inventario local, versión 2.0. Creado por marceAE.">
   <meta name="theme-color" content="#07152f">
   <title>2M — Sistema de Inventario</title>
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="#inicio" aria-label="2M inicio">
-        <img src="assets/logo.svg" alt="Logo 2M">
+      <a class="brand" href="#inicio">
         <span>2M</span>
       </a>
-      <a class="nav-link" href="#caracteristicas">Características</a>
+      <nav class="nav-links">
+        <a class="nav-link" href="#caracteristicas">Características</a>
+      </nav>
     </div>
   </header>
 
+  <!-- HERO / SECCIÓN PRINCIPAL -->
   <main id="inicio">
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="badge"><span></span> Versión 2.0</div>
+          <div class="badge">Versión 2.0</div>
           <h1>Controla tu inventario de forma <em>fácil y rápida.</em></h1>
           <p class="lead">
-            2M es un sistema de inventario local creado por <strong>marceAE + inteligencia artificial</strong>,
+            2M es un sistema de inventario local creado por <strong>marceAE</strong>,
             pensado para ayudarte a registrar productos, controlar entradas y salidas y consultar reportes.
           </p>
 
+          <!-- BOTONES DE DESCARGA -->
           <div class="download-card">
             <div>
               <div class="eyebrow">DESCARGA PARA WINDOWS</div>
               <h2>2M — v2.0 (PC)</h2>
               <p>Archivo ZIP · aplicación local</p>
             </div>
-            <button class="download-btn" id="downloadBtn" type="button" style="position: relative; z-index: 999; cursor: pointer;">
-              <span class="download-icon">↓</span>
-              Descargar PC
+            <button class="download-btn" id="downloadBtn" type="button">
+              <span>↓</span> Descargar PC
             </button>
           </div>
 
@@ -49,110 +51,41 @@
               <h2>2M — v2.0 (Android)</h2>
               <p>Archivo ZIP / APK móvil</p>
             </div>
-            <button class="download-btn" id="downloadMobileBtn" type="button" style="background-color: #10b981; position: relative; z-index: 999; cursor: pointer;">
-              <span class="download-icon">↓</span>
-              Descargar Celular
+            <button class="download-btn" id="downloadMobileBtn" type="button" style="background-color: #10b981;">
+              <span>↓</span> Descargar Celular
             </button>
           </div>
 
-          <p class="download-note">
-            Disponible para Windows y dispositivos Android. No necesitas instalar Python.
-          </p>
-        </div>
-
-        <div class="hero-visual">
-          <div class="glow"></div>
-          <div class="logo-card">
-            <img src="assets/logo.svg" alt="Logo de 2M">
-            <div class="logo-card-title">2M</div>
-            <div class="logo-card-sub">SISTEMA DE INVENTARIO</div>
-            <div class="version-pill">2.0</div>
-          </div>
+          <p class="download-note">Disponible para Windows y Android. No requiere instalar Python.</p>
         </div>
       </div>
     </section>
 
+    <!-- CARACTERÍSTICAS -->
     <section class="section" id="caracteristicas">
       <div class="container">
         <div class="section-heading">
           <div class="eyebrow">¿QUÉ OFRECE?</div>
-          <h2>Todo lo necesario para empezar.</h2>
-          <p>Una herramienta local para organizar y controlar tu inventario sin depender de una conexión permanente a internet.</p>
+          <h2>Todo lo necesario para empezar</h2>
         </div>
-
         <div class="features">
-          <article class="feature">
-            <div class="feature-icon">01</div>
-            <h3>Productos</h3>
-            <p>Registra productos utilizando códigos únicos nuevos.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">02</div>
-            <h3>Registro</h3>
-            <p>Consulta los códigos únicos y el valor asignado a cada producto.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">03</div>
-            <h3>Entradas y salidas</h3>
-            <p>Ingresa cantidades de productos previamente registrados y controla las salidas.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">04</div>
-            <h3>Reporte</h3>
-            <p>Revisa los datos reportados según la selección realizada en Inventario.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">05</div>
-            <h3>Inventario</h3>
-            <p>Trabaja con Diario Total o Inter Diario según la selección realizada.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">06</div>
-            <h3>Contraseña</h3>
-            <p>El administrador puede cambiar la contraseña única utilizada por el sistema.</p>
-          </article>
+          <article class="feature"><h3>01. Productos</h3><p>Registra artículos con códigos únicos.</p></article>
+          <article class="feature"><h3>02. Registro</h3><p>Consulta el valor asignado de cada producto.</p></article>
+          <article class="feature"><h3>03. Entradas/Salidas</h3><p>Controla stock de forma sencilla.</p></article>
+          <article class="feature"><h3>04. Reportes</h3><p>Revisa datos de inventario al instante.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section warning-section">
-      <div class="container">
-        <div class="warning">
-          <div class="warning-symbol">!</div>
-          <div>
-            <h3>Importante antes de eliminar un inventario</h3>
-            <p>Siempre exporta los datos si existe la posibilidad de necesitarlos en el futuro. Una vez eliminado un inventario, la información podría dejar de estar disponible.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section about">
-      <div class="container about-grid">
-        <div>
-          <div class="eyebrow">PRIMER INGRESO</div>
-          <h2>El primer usuario será el administrador.</h2>
-          <p>
-            Al abrir 2M por primera vez, quien inicie el programa deberá crear el nombre del inventario
-            y una contraseña única. Esa contraseña será válida en todos los campos del programa que la requieran.
-          </p>
-        </div>
-        <div class="quote-card">
-          <div class="quote-mark">“</div>
-          <p>2M nace para hacer el control de inventario más sencillo, rápido y práctico.</p>
-          <span>— marceAE + IA</span>
-        </div>
-      </div>
-    </section>
-
+    <!-- SECCIÓN APOYO -->
     <section class="support">
       <div class="container support-inner">
         <div>
-          <div class="eyebrow">SI TE RESULTA ÚTIL</div>
-          <h2>Apoya el proyecto ❤️</h2>
-          <p>Puedes descargar 2M gratuitamente. Si quieres apoyar al creador, cualquier aporte ayuda a continuar mejorando el proyecto.</p>
+          <div class="eyebrow">APoya EL PROYECTO</div>
+          <h2>¿Te resulta útil? ❤️</h2>
+          <p>Puedes descargar la app gratis y, si lo deseas, apoyar al creador.</p>
         </div>
-        <button class="support-btn" id="supportBtn" type="button" style="cursor: pointer; position: relative; z-index: 999;">Quiero apoyar</button>
+        <button class="support-btn" id="supportBtn" type="button">Quiero apoyar</button>
       </div>
     </section>
   </main>
@@ -164,43 +97,36 @@
     </div>
   </footer>
 
-  <!-- Donation modal -->
-  <div class="modal-backdrop" id="donationModal" aria-hidden="true" style="display: none;">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="donationTitle">
-      <button class="modal-close" id="closeModal" type="button" aria-label="Cerrar">×</button>
+  <!-- VENTANA MODAL DE DONACIÓN (YAPE Y PAYPAL) -->
+  <div class="modal-backdrop" id="donationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: 9999; justify-content: center; align-items: center;">
+    <div class="modal" style="background: #0b1c3c; padding: 30px; border-radius: 12px; max-width: 420px; width: 90%; color: #fff; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+      <button class="modal-close" id="closeModal" type="button" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;">×</button>
 
-      <div class="modal-icon">♥</div>
-      <div class="eyebrow">APOYA A 2M</div>
-      <h2 id="donationTitle">¿Deseas donar al creador?</h2>
-      <p class="modal-text">Si deseas apoyar al creador para proyectos futuros. Elige un monto o dona la cantidad que prefieras.</p>
+      <div style="font-size: 28px; color: #f43f5e; margin-bottom: 8px;">♥</div>
+      <div style="color: #38bdf8; font-size: 12px; font-weight: bold; margin-bottom: 5px;">APOYA A 2M</div>
+      <h2 style="font-size: 20px; margin-bottom: 10px;">¿Deseas donar al creador?</h2>
+      <p style="font-size: 13px; color: #94a3b8; margin-bottom: 20px;">Tu apoyo ayuda a continuar mejorando el proyecto. Elige una opción:</p>
 
-      <div class="amounts">
-        <button class="amount" data-amount="5" type="button">S/ 5</button>
-        <button class="amount" data-amount="10" type="button">S/ 10</button>
-        <button class="amount" data-amount="other" type="button">Otro monto</button>
+      <!-- TARJETA YAPE -->
+      <div style="background: #1e293b; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 15px;">
+        <div style="font-weight: bold; color: #38bdf8; margin-bottom: 5px;">Yape</div>
+        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">Escanea el código QR:</p>
+        <img src="assets/yape-qr.jpg" alt="QR Yape" style="width: 110px; height: 110px; border-radius: 6px; margin-bottom: 5px;">
+        <p style="font-size: 11px; color: #cbd5e1;">Marcelo Andre Abanto Escobar</p>
       </div>
 
-      <div class="payment-area" id="paymentArea">
-        <div class="payment-card">
-          <div class="payment-title">Yape</div>
-          <p>Escanea el QR y coloca el monto que deseas donar.</p>
-          <img class="qr" src="assets/yape-qr.jpg" alt="Código QR de Yape para donar a marceAE">
-          <p class="qr-name">Marcelo Andre Abanto Escobar</p>
-        </div>
-
-        <div class="payment-card paypal-card">
-          <div class="payment-title">PayPal</div>
-          <p>Puedes realizar tu donación de forma segura mediante PayPal.</p>
-          <button class="paypal-btn" id="paypalBtn" type="button">Donar con PayPal</button>
-        </div>
+      <!-- BOTÓN PAYPAL -->
+      <div style="background: #1e293b; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 15px;">
+        <div style="font-weight: bold; color: #38bdf8; margin-bottom: 5px;">PayPal</div>
+        <a href="https://paypal.me" target="_blank" style="display: inline-block; background: #0070ba; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold;">Donar con PayPal</a>
       </div>
 
-      <button class="decline-btn" id="declineBtn" type="button">Por el momento no deseo, gracias</button>
-      <p class="download-status" id="downloadStatus"></p>
+      <button id="declineBtn" type="button" style="width: 100%; padding: 10px; background: transparent; border: 1px solid #475569; color: #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 13px;">O continuar con la descarga gratis</button>
+      <p id="downloadStatus" style="text-align: center; margin-top: 10px; font-size: 12px; color: #34d399;"></p>
     </div>
   </div>
 
-  <!-- Script integrado con forzado visual del Modal -->
+  <!-- SCRIPT INTEGRADO (CERO DEPENDENCIAS EXTERNAS) -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const downloadBtn = document.getElementById('downloadBtn');
@@ -209,58 +135,28 @@
       const donationModal = document.getElementById('donationModal');
       const closeModal = document.getElementById('closeModal');
       const declineBtn = document.getElementById('declineBtn');
-      const amountButtons = document.querySelectorAll('.amount');
-      const paypalBtn = document.getElementById('paypalBtn');
       const downloadStatus = document.getElementById('downloadStatus');
 
-      let selectedType = 'pc';
-
-      function openModal(type) {
-        selectedType = type;
-        if (donationModal) {
-          donationModal.style.display = 'flex';
-          donationModal.classList.add('active');
-          donationModal.setAttribute('aria-hidden', 'false');
-        }
+      function openModal() {
+        if (donationModal) donationModal.style.display = 'flex';
         if (downloadStatus) downloadStatus.textContent = '';
       }
 
       function closeModalWindow() {
-        if (donationModal) {
-          donationModal.style.display = 'none';
-          donationModal.classList.remove('active');
-          donationModal.setAttribute('aria-hidden', 'true');
-        }
+        if (donationModal) donationModal.style.display = 'none';
       }
 
-      function proceedDownload() {
-        // Enlace oficial de tus releases en GitHub
-        const targetUrl = 'https://github.com/2M-2A/2M/releases';
-        window.open(targetUrl, '_blank');
-        if (downloadStatus) downloadStatus.textContent = '¡Redirigiendo a la descarga!';
+      function executeDownload() {
+        window.open('https://github.com/2M-2A/2M/releases', '_blank');
+        if (downloadStatus) downloadStatus.textContent = '¡Redirigiendo a las descargas!';
         setTimeout(closeModalWindow, 1500);
       }
 
-      if (downloadBtn) downloadBtn.addEventListener('click', () => openModal('pc'));
-      if (downloadMobileBtn) downloadMobileBtn.addEventListener('click', () => openModal('mobile'));
-      if (supportBtn) supportBtn.addEventListener('click', () => openModal('pc'));
-
+      if (downloadBtn) downloadBtn.addEventListener('click', openModal);
+      if (downloadMobileBtn) downloadMobileBtn.addEventListener('click', openModal);
+      if (supportBtn) supportBtn.addEventListener('click', openModal);
       if (closeModal) closeModal.addEventListener('click', closeModalWindow);
-      if (declineBtn) declineBtn.addEventListener('click', proceedDownload);
-
-      amountButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          amountButtons.forEach(b => b.classList.remove('selected'));
-          btn.classList.add('selected');
-        });
-      });
-
-      if (paypalBtn) {
-        paypalBtn.addEventListener('click', () => {
-          window.open('https://paypal.me', '_blank');
-          proceedDownload();
-        });
-      }
+      if (declineBtn) declineBtn.addEventListener('click', executeDownload);
 
       if (donationModal) {
         donationModal.addEventListener('click', (e) => {
