@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let selectedDownloadType = 'pc'; // Por defecto PC
 
+  // Enlaces directos a los archivos específicos de tu Release v2.0 en GitHub
+  const pcFileUrl = 'https://github.com/2M-2A/2M/releases/download/untagged-c90cd913a377b4944935/2M_PC_Tkinter.zip';
+  const mobileFileUrl = 'https://github.com/2M-2A/2M/releases/download/untagged-c90cd913a377b4944935/2M_app_movil_2m.zip';
+
   function openModal(type) {
     selectedDownloadType = type;
     donationModal.classList.add('active');
@@ -24,23 +28,35 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function triggerDownload() {
-    // Redirige directamente a la sección de Releases de tu repositorio
-    window.open('https://github.com/2M-2A/2M/releases', '_blank');
-    downloadStatus.textContent = '¡Redirigiendo a las descargas oficiales!';
-    setTimeout(closeModalWindow, 2000);
+    const fileUrl = selectedDownloadType === 'mobile' ? mobileFileUrl : pcFileUrl;
+    
+    // Abre el archivo en una pestaña nueva para forzar la descarga de forma limpia
+    window.open(fileUrl, '_blank');
+
+    downloadStatus.textContent = '¡Descarga iniciada con éxito! Gracias por usar 2M.';
+    setTimeout(closeModalWindow, 2500);
   }
 
   // Eventos de los botones de descarga principal
   if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => openModal('pc'));
+    downloadBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal('pc');
+    });
   }
 
   if (downloadMobileBtn) {
-    downloadMobileBtn.addEventListener('click', () => openModal('mobile'));
+    downloadMobileBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal('mobile');
+    });
   }
 
   if (supportBtn) {
-    supportBtn.addEventListener('click', () => openModal('pc'));
+    supportBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal('pc');
+    });
   }
 
   // Cerrar modal
